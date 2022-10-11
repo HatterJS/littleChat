@@ -1,0 +1,60 @@
+$border: 1px solid rgb(150, 150, 150);
+$shadow: 1px 1px 1px rgb(70, 70, 70);
+$textColor: rgb(80, 80, 80);
+
+input, button {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: $border;
+    color: $textColor;
+    font-size: 16px;
+    &:focus {
+        outline: none;
+        border-color: rgb(80, 80, 80);
+    }
+}
+button {
+    background-color: rgb(220, 255, 190);
+    &:hover {
+        box-shadow: $shadow;
+        transform: translateY(-1px);
+    }
+    &:disabled {
+        background-color: rgb(230, 230, 230);
+        color: rgb(180, 180, 180);
+        cursor: auto;
+        &:hover {
+            box-shadow: none;
+            transform: none;
+        }
+    }
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+.content {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    max-width: 1080px;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.autorization {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    width: 300px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: $border;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: $shadow;
+}
