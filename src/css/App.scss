@@ -2,7 +2,7 @@ $border: 1px solid rgb(150, 150, 150);
 $shadow: 1px 1px 1px rgb(70, 70, 70);
 $textColor: rgb(80, 80, 80);
 
-input, button {
+input, textarea, button {
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 10px;
@@ -16,6 +16,7 @@ input, button {
 }
 button {
     background-color: rgb(220, 255, 190);
+    transition: all 0.2s ease-in-out;
     &:hover {
         box-shadow: $shadow;
         transform: translateY(-1px);
@@ -41,7 +42,7 @@ button {
     display: flex;
     position: relative;
     justify-content: center;
-    max-width: 1080px;
+    width: 1080px;
     height: 100vh;
     margin: 0 auto;
 }

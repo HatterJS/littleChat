@@ -3,7 +3,20 @@ export default function reducer(state, action) {
         case 'IS_AUTORIZATION':
             return {
                 ...state, 
-                isAuthorization: action.payload
+                isAuthorization: true,
+                roomName: action.payload.roomName,
+                password: action.payload.password,
+                userName: action.payload.userName,
+            }
+        case 'SET_USERS':
+            return {
+                ...state,
+                users: action.payload
+            }
+        case 'SET_MESSAGES':
+            return {
+                ...state,
+                messageData: [...state.messageData, action.payload]
             }
         default:
             return state;

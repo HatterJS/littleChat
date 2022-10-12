@@ -1,4 +1,4 @@
-input, button {
+input, textarea, button {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 10px;
@@ -6,13 +6,15 @@ input, button {
   color: rgb(80, 80, 80);
   font-size: 16px;
 }
-input:focus, button:focus {
+input:focus, textarea:focus, button:focus {
   outline: none;
   border-color: rgb(80, 80, 80);
 }
 
 button {
   background-color: rgb(220, 255, 190);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 button:hover {
   -webkit-box-shadow: 1px 1px 1px rgb(70, 70, 70);
@@ -50,7 +52,7 @@ button:disabled:hover {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  max-width: 1080px;
+  width: 1080px;
   height: 100vh;
   margin: 0 auto;
 }
