@@ -11,6 +11,7 @@ function Chat({roomName, userName, users, messageData, addMessage}) {
 
     const [typeMessage, setTypeMessage] = React.useState("");
 
+    //плавная прокрутка скролла вниз при переполненни окна сообщений
     const messagesEndRef = React.useRef(null);
     const scrollToBottom = () => {
         messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
@@ -20,10 +21,18 @@ function Chat({roomName, userName, users, messageData, addMessage}) {
     }, [messageData]);
 
     function sendMessage() {
+        const currentDate = new Date();
+        const currentTime = currentDate.toLocaleTimeString('en-US', {
+            hour12: false,
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        console.log(currentTime);
         const messageData = {
             roomName,
             userName,
-            typeMessage
+            typeMessage,
+            currentTime
         };
         socket.emit('ROOM:NEW_MESSAGE', messageData);
         setTypeMessage('');
@@ -47,7 +56,10 @@ function Chat({roomName, userName, users, messageData, addMessage}) {
                     <h4>Room: {roomName}</h4>
                     <div className="chat__chatFrame">
                         {messageData.map((message, index) => <div className={message.userName===userName ? "chat__myMessages" : "chat__usersMesages"} key={index}>
-                            <h5>{message.userName}</h5>
+                            <div className="chat__headOfMessage">
+                                <h5>{message.userName}</h5>
+                                <p>{message.currentTime}</p>
+                            </div>
                             <p>{message.typeMessage}</p>
                         </div>)}
                         <div ref={messagesEndRef} style={{visibility: 'hidden'}}/>

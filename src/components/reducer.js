@@ -18,6 +18,11 @@ export default function reducer(state, action) {
                 ...state,
                 messageData: [...state.messageData, action.payload]
             }
+        case 'SET_OLD_MESSAGES':
+            return {
+                ...state,
+                messageData: action.payload
+            }
         default:
             return state;
     }

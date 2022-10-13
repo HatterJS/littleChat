@@ -23,12 +23,23 @@ function Autorization(props) {
         props.setIsLoading(false);
     }
 
+    const nextField = (id) => {
+        const nextFieldId = document.querySelectorAll('input');
+        if (Number(id)===nextFieldId.length) {
+            document.querySelector('button').disabled ? nextFieldId[0].focus() : document.querySelector('button').focus();
+        } else {
+            [...nextFieldId].map((obj) => (
+                (obj.id === id)&&(Number(id)<3) && nextFieldId[Number(id)].focus()
+            ));
+        }
+    }
+
     return (
         <React.Fragment>
             <div className="autorization">
-                <input type="text" placeholder='Room id' onChange={(event) => setRoomName(event.target.value)} value={roomName} />
-                <input type="text" placeholder='Password' onChange={(event) => setPassword(event.target.value)} value={password} />
-                <input type="text" placeholder='Your name' onChange={(event) => setUserName(event.target.value)} value={userName} />
+                <input id='1' type="text" maxLength={20} placeholder='Room id' onChange={(event) => setRoomName(event.target.value)} onKeyUp={e => (e.key === 'Enter' && nextField(e.target.id))} value={roomName} />
+                <input id='2' type="text" placeholder='Password' onChange={(event) => setPassword(event.target.value)} onKeyUp={e => (e.key === 'Enter' && nextField(e.target.id))} value={password} />
+                <input id='3' type="text" maxLength={20} placeholder='Your name' onChange={(event) => setUserName(event.target.value)} onKeyUp={e => (e.key === 'Enter' && nextField(e.target.id))} value={userName} />
                 <button
                     className='unselectable'
                     onClick={enter}

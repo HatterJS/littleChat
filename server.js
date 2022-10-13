@@ -45,9 +45,8 @@ io.on('connection', (socket) => {
         });
     });
 
-    socket.on('ROOM:NEW_MESSAGE', ({roomName, userName, typeMessage}) => {
-        const messageData = {userName, typeMessage};
-        console.log(messageData);
+    socket.on('ROOM:NEW_MESSAGE', ({roomName, userName, typeMessage, currentTime}) => {
+        const messageData = {userName, typeMessage, currentTime};
         rooms.get(roomName).get('messages').push(messageData);
         socket.to(roomName).emit('ROOM:NEW_MESSAGE', messageData);
     });

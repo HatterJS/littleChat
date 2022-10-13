@@ -29,6 +29,12 @@ function App() {
     });
     socket.emit('ROOM:JOIN', userData);
     axios.get(`/chat/${userData.roomName}`).then(res => setUsers(res.data.users));
+    axios.get(`/chat/${userData.roomName}`).then(res =>
+      dispatch({
+        type: 'SET_OLD_MESSAGES',
+        payload: res.data.messages
+      })
+    );
   }
 
   function setUsers(users) {
