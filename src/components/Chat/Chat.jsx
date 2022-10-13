@@ -45,24 +45,28 @@ function Chat({roomName, userName, users, messageData, addMessage}) {
                 <div className="chat__usersPanel">
                     <h4>{userName}</h4>
                     <div className="chat__usersFrame unselectable">
-                        <p>{`Online (${users.length})`}</p>
-                        {users.map((user, index) => <div className="chat__userItem" key={index}>
-                            <img src="./img/userAvatar.png" alt="" />
-                            <p>{user}</p>
-                        </div>)}
+                        <div className="chat__innerFrame">
+                            <p>{`Online (${users.length})`}</p>
+                            {users.map((user, index) => <div className="chat__userItem" key={index}>
+                                <img src="./img/userAvatar.png" alt="" />
+                                <p>{user}</p>
+                            </div>)}
+                        </div>
                     </div>
                 </div>
                 <div className="chat__messageBlock">
                     <h4>Room: {roomName}</h4>
                     <div className="chat__chatFrame">
-                        {messageData.map((message, index) => <div className={message.userName===userName ? "chat__myMessages" : "chat__usersMesages"} key={index}>
-                            <div className="chat__headOfMessage">
-                                <h5>{message.userName}</h5>
-                                <p>{message.currentTime}</p>
-                            </div>
-                            <p>{message.typeMessage}</p>
-                        </div>)}
-                        <div ref={messagesEndRef} style={{visibility: 'hidden'}}/>
+                        <div className="chat__innerFrame">
+                            {messageData.map((message, index) => <div className={message.userName===userName ? "chat__myMessages" : "chat__usersMesages"} key={index}>
+                                <div className="chat__headOfMessage">
+                                    <h5 className="unselectable">{message.userName}</h5>
+                                    <p className="unselectable">{message.currentTime}</p>
+                                </div>
+                                <p>{message.typeMessage}</p>
+                            </div>)}
+                            <div ref={messagesEndRef} style={{visibility: 'hidden'}}/>
+                        </div>
                     </div>
                     <div className="chat__writtingBlock">
                         <textarea

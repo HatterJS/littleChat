@@ -20,6 +20,15 @@
   text-align: center;
 }
 .chat .chat__usersFrame, .chat .chat__chatFrame {
+  border: 1px solid rgb(150, 150, 150);
+  border-radius: 15px;
+  padding-top: 5px;
+  -webkit-box-shadow: 1px 1px 2px rgb(80, 80, 80) inset;
+          box-shadow: 1px 1px 2px rgb(80, 80, 80) inset;
+  background-color: rgb(235, 235, 235);
+  overflow: hidden;
+}
+.chat .chat__usersFrame .chat__innerFrame, .chat .chat__chatFrame .chat__innerFrame {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -27,12 +36,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: 1px solid rgb(150, 150, 150);
-  border-radius: 15px;
   padding: 5px;
-  -webkit-box-shadow: 1px 1px 2px rgb(70, 70, 70) inset;
-          box-shadow: 1px 1px 2px rgb(70, 70, 70) inset;
-  background-color: rgb(240, 240, 240);
   overflow: auto;
 }
 .chat .chat__usersFrame .chat__myMessages, .chat .chat__usersFrame .chat__usersMesages, .chat .chat__usersFrame .chat__userItem, .chat .chat__chatFrame .chat__myMessages, .chat .chat__chatFrame .chat__usersMesages, .chat .chat__chatFrame .chat__userItem {
@@ -56,7 +60,7 @@
   min-width: 130px;
   margin-right: 10px;
 }
-.chat .chat__usersPanel .chat__usersFrame div {
+.chat .chat__usersPanel .chat__innerFrame div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -67,13 +71,13 @@
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-.chat .chat__usersPanel .chat__usersFrame div:hover {
+.chat .chat__usersPanel .chat__innerFrame div:hover {
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
   -webkit-box-shadow: 2px 2px 2px rgb(70, 70, 70);
           box-shadow: 2px 2px 2px rgb(70, 70, 70);
 }
-.chat .chat__usersPanel .chat__usersFrame div img {
+.chat .chat__usersPanel .chat__innerFrame div img {
   height: 25px;
   width: 25px;
   margin-right: 5px;
@@ -101,14 +105,17 @@
           flex: 1 1 auto;
 }
 .chat .chat__messageBlock .chat__chatFrame .chat__usersMesages {
-  margin-right: 10px;
+  margin-right: 20px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   max-width: 100%;
+  min-width: 180px;
 }
 .chat .chat__messageBlock .chat__chatFrame .chat__myMessages {
   -ms-flex-item-align: end;
       align-self: flex-end;
-  margin-left: 10px;
-  max-width: 100%;
+  margin-left: 20px;
   background-color: rgb(244, 255, 212);
 }
 .chat .chat__messageBlock .chat__chatFrame .chat__headOfMessage {
