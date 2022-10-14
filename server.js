@@ -21,11 +21,14 @@ app.post('/chat', (req, res) => {
     const { roomName, password, userName } = req.body;
      if (!rooms.has(roomName)) {
         rooms.set(roomName, new Map([
+            ['password', password],
             ['users', new Map()],
             ['messages', []]
         ]));
+        res.json('room built');
+     } else {
+        rooms.get(roomName).get('password')===password ? res.json(true) :  res.json(false);
      }
-     res.json(rooms);
 });
 
 io.on('connection', (socket) => {

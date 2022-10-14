@@ -16,7 +16,9 @@ function Autorization(props) {
     async function enter() {
         props.setIsLoading(true);
         try {
-            await axios.post('/chat', userData).then(props.onLogin(userData));
+            await axios.post('/chat', userData).then(res => {
+                res.data ? props.onLogin(userData) : alert('wrong login / password');
+                });
         } catch (error) {
             alert('Ой, щось пішло не так ;(');
         }
@@ -37,7 +39,7 @@ function Autorization(props) {
     return (
         <React.Fragment>
             <div className="autorization">
-                <input id='1' type="text" maxLength={20} placeholder='Room id' onChange={(event) => setRoomName(event.target.value)} onKeyUp={e => (e.key === 'Enter' && nextField(e.target.id))} value={roomName} />
+                <input id='1' type="text" maxLength={20} placeholder='Room' onChange={(event) => setRoomName(event.target.value)} onKeyUp={e => (e.key === 'Enter' && nextField(e.target.id))} value={roomName} />
                 <input id='2' type="text" placeholder='Password' onChange={(event) => setPassword(event.target.value)} onKeyUp={e => (e.key === 'Enter' && nextField(e.target.id))} value={password} />
                 <input id='3' type="text" maxLength={20} placeholder='Your name' onChange={(event) => setUserName(event.target.value)} onKeyUp={e => (e.key === 'Enter' && nextField(e.target.id))} value={userName} />
                 <button
