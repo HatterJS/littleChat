@@ -5,9 +5,11 @@ import './css/App.css';
 import socket from './socket';
 import reducer from './components/reducer';
 
+import Header from './components/Header';
 import Autorization from './components/Autorization';
 import Chat from './components/Chat/Chat';
 import Loader from './components/Loader/Loader';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -61,6 +63,7 @@ function App() {
   return (
     <React.Fragment>
       <div className="wrapper">
+        <Header />
         {!isLoading ?
           <div className="content">
             {!state.isAuthorization ? <Autorization 
@@ -77,6 +80,7 @@ function App() {
           </div> :
           <Loader />
         }
+        <Footer />
       </div>
     </React.Fragment>
   );
