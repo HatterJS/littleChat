@@ -16,7 +16,7 @@ function Autorization(props) {
     async function enter() {
         props.setIsLoading(true);
         try {
-            await axios.post('/chat', userData).then(res => {
+            await axios.post('http://185.237.204.125:8889/chat', userData).then(res => {
                 res.data ? props.onLogin(userData) : alert('wrong login / password');
                 });
         } catch (error) {

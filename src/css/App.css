@@ -99,9 +99,6 @@ header img {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 300px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
   border: 1px solid rgb(150, 150, 150);
   padding: 20px;
   border-radius: 25px;

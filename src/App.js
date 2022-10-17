@@ -30,8 +30,8 @@ function App() {
       payload: userData
     });
     socket.emit('ROOM:JOIN', userData);
-    axios.get(`/chat/${userData.roomName}`).then(res => setUsers(res.data.users));
-    axios.get(`/chat/${userData.roomName}`).then(res =>
+    axios.get(`http://185.237.204.125:8889/chat/${userData.roomName}`).then(res => setUsers(res.data.users));
+    axios.get(`http://185.237.204.125:8889/chat/${userData.roomName}`).then(res =>
       dispatch({
         type: 'SET_OLD_MESSAGES',
         payload: res.data.messages
@@ -76,6 +76,7 @@ function App() {
               users = {state.users}
               messageData = {state.messageData}
               addMessage = {addMessage}
+              password = {state.password}
             />}
           </div> :
           <Loader />

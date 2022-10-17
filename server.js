@@ -1,10 +1,16 @@
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
 app.use(express.json());
+
+app.use(cors({
+    origin: "http://mypage.energodar.top",
+    methods: ["GET", "POST", "PUT", "DELETE"]
+}));
 
 const rooms = new Map();
 

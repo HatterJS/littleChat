@@ -7,7 +7,7 @@ const sendMessageSVG = <svg width="23" height="23" viewBox="0 0 23 23" fill="non
     <path d="M9.5 13L1 9.00001L21.5 1.00001M9.5 13L21.5 1.00001M9.5 13L13.5 21.5L21.5 1.00001" stroke="#646464" strokeWidth="1.5" strokeLinejoin="round"/>
 </svg>
 
-function Chat({roomName, userName, users, messageData, addMessage}) {
+function Chat({roomName, userName, users, messageData, addMessage, password}) {
 
     const [typeMessage, setTypeMessage] = React.useState("");
 
@@ -58,6 +58,7 @@ function Chat({roomName, userName, users, messageData, addMessage}) {
                     <h4>Room: {roomName}</h4>
                     <div className="chat__chatFrame">
                         <div className="chat__innerFrame">
+                            <p>password: {password}</p>
                             {messageData.map((message, index) => <div className={message.userName===userName ? "chat__myMessages" : "chat__usersMesages"} key={index}>
                                 <div className="chat__headOfMessage">
                                     <h5 className="unselectable">{message.userName}</h5>
